@@ -1,29 +1,168 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello Rigo with Vanilla.js</title>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-      integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-      crossorigin="anonymous"
-    />
-    <link rel="shortcut icon" href="./4geeks.ico" />
+    <title>Mi generador de excusas</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(135deg, #f5f5f5, #c1c1c1);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #333;
+      }
+
+      .wrap {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 600px;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2.5em;
+        color: #4f4f4f;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+
+      #excuse {
+        font-size: 1.8em;
+        color: #ff6347;
+        font-weight: bold;
+        margin: 20px 0;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out;
+      }
+
+      #excuse:hover {
+        background-color: #ffedeb;
+        transform: scale(1.05);
+      }
+
+      button {
+        font-size: 1.2em;
+        padding: 15px 30px;
+        background-color: #ff6347;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-weight: 600;
+        margin-top: 30px;
+      }
+
+      /* Efecto hover en el botón */
+      button:hover {
+        background-color: #e5533c;
+        transform: translateY(-3px);
+      }
+
+      /* Estilos responsivos */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2em;
+        }
+
+        #excuse {
+          font-size: 1.5em;
+        }
+
+        button {
+          font-size: 1.1em;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div class="container-fluid text-center">
-      <h1 class="mt-5">Hello Rigo!</h1>
-      <img src="./rigo-baby.jpg" />
-      <p class="alert alert-warning mt-4">
-        If this text is <b>not</b> centered and <b>yellow</b>, you probably have
-        an error
-      </p>
-      <div class="fixed-bottom p-4">
-        Made with ❤️ by
-        <a href="https://www.4geeksacademy.com">4Geeks Academy</a>
-      </div>
+    <div class="wrap">
+      <h1>¡Lo siento, pero...</h1>
+      <h1 id="excuse"></h1>
+      <button onclick="window.location.reload()">Generar otra excusa</button>
     </div>
+    <script type="text/javascript">
+      window.onload = function() {
+        let first = "Un ";
+        let adj = [
+          "pirado ",
+          "loco ",
+          "enfadado ",
+          "maloliente ",
+          "chiflado ",
+          "maligno ",
+          "perezoso ",
+          "malhumorado ",
+          "viejo "
+        ];
+        let noun = [
+          "vendedor de churros ",
+          "mapache con un acordeón ",
+          "perro con rabia ",
+          "cartero ",
+          "conductor de autobus ",
+          "profesor de programación ",
+          "estudiante "
+        ];
+        let action = [
+          "se llevó mi ",
+          "rompió mi ",
+          "se cargó mi ",
+          "escondió mi ",
+          "robó mi ",
+          "quemó mi ",
+          "se comió mi ",
+          "cocinó mi "
+        ];
+        let possetion = [
+          "teléfono ",
+          "coche ",
+          "mochila ",
+          "zapatilla ",
+          "llave de casa ",
+          "bono del metro ",
+          "ordenador ",
+          "libro ",
+          "comida ",
+          "almuerzo "
+        ];
+        let where = [
+          "en la entrada de mi casa!",
+          "en el parking de la oficina!",
+          "mientras esperaba para entrar al baño!",
+          "en la cocina!",
+          "en el parque!",
+          "en el centro comercial!",
+          "en la parada del autobus!"
+        ];
+
+        let rdm1 = Math.floor(Math.random() * adj.length);
+        let rdm2 = Math.floor(Math.random() * noun.length);
+        let rdm3 = Math.floor(Math.random() * action.length);
+        let rdm4 = Math.floor(Math.random() * possetion.length);
+        let rdm5 = Math.floor(Math.random() * where.length);
+
+        document.querySelector("#excuse").innerHTML =
+          first +
+          adj[rdm1] +
+          noun[rdm2] +
+          action[rdm3] +
+          possetion[rdm4] +
+          where[rdm5];
+      };
+    </script>
   </body>
 </html>
